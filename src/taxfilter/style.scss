@@ -1,0 +1,47 @@
+.block-taxfilter{
+	max-width: 100% !important;
+
+	&--inline {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 10px;
+		justify-content: center;
+	}
+
+	&__item {
+		background: #F3F9FB;
+		border-radius: 50px;
+		padding: 9px 14px;
+		cursor: pointer;
+	}
+
+	&__input[type="radio"]{
+		display: none;
+		cursor: pointer;
+	}
+
+	&__label{
+		cursor: pointer;
+		span{
+				font-size: 18px;
+				font-weight: 400;
+		}
+	}
+
+	&__title {
+    font-size: 18px;
+    font-weight: 700;
+	}
+
+}
+
+.block-taxfilter--checkbox{
+
+	.block-taxfilter__item {
+		background: transparent;
+		padding: 5px 0px;
+	}
+
+
+}
+

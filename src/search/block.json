@@ -1,0 +1,41 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "create-block/searcher",
+	"version": "0.1.0",
+	"title": "Buscador",
+	"category": "widgets",
+	"icon": "search",
+	"description": "This is a searcher",
+	"example": {},
+	"supports": {
+		"html": false
+	},
+	"attributes": {
+		"placeholder": {
+			"type": "string",
+			"default": "Buscar"
+		},
+		"buttonText": {
+			"type": "string",
+			"default": "Buscar"
+		},
+		"searchPage": {
+			"type": "boolean",
+			"default": false
+		},
+		"className": {
+			"type": "string",
+			"default": ""
+		},
+		"icon": {
+			"type": "string",
+			"default": ""
+		}
+	},
+	"textdomain": "custom-block",
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css",
+	"viewScript": "file:./view.js"
+}

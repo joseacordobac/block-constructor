@@ -1,0 +1,23 @@
+<?php
+  
+  class RouterPages {
+
+    public function REST_API_SLUG() {
+
+      add_action('rest_api_init',
+      function(){
+        register_rest_route(
+          API_ROUTE,
+          '/pages',
+          array(
+            'methods' => array('GET'),
+            'callback' => array(new ControllerPages(), 'apiSlug'),
+            'permission_callback' => '__return_true'
+          )
+        );
+      });
+     
+    }
+
+  }
+

@@ -1,0 +1,19 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "create-block/sliders-block",
+  "version": "0.1.0",
+  "title": "Special Blocks",
+  "category": "slides",
+  "icon": "smiley",
+  "description": "Slider wordpress plugin",
+  "example": {},
+  "supports": {
+    "html": false
+  },
+  "textdomain": "sliders-block",
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css",
+  "viewScript": "file:./view.js"
+}

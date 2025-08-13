@@ -1,0 +1,55 @@
+.course-info{
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+}
+
+.course-btn_-navs {
+	display: flex
+;
+	justify-content: space-between;
+}
+
+.course-btn__next {
+	background: #0062D1;
+	color: white;
+	padding: 20px 25px;
+	text-decoration: none;
+	display: flex;
+	align-items: center;
+	gap: 5px;
+}
+
+.course__description p{
+	margin: 16px 0px;
+	line-height: 20px;
+}
+
+.wp-block-list li{
+	margin: 12px 0px;
+}
+
+.course-btn--next{
+	position: relative;
+}
+
+.course-btn--next::after{
+	content: url('../../../assets/icons/left.svg');
+}
+
+.course-btn__next.course-btn--prev::before{
+	content: url('../../../assets/icons/rigth.svg');
+}
+
+
+@media(max-width: 780px){
+	.course-btn__next{
+		padding: 10px 10px;
+		font-size: 12px;
+	}
+
+	.course__title{
+		font-size: 24px;
+    line-height: 30px;
+	}
+}

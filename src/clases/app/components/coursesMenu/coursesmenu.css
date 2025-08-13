@@ -1,0 +1,19 @@
+.coursesmenu {
+	position: relative;
+	width: 25px;
+	height: 25px;
+	cursor: pointer;
+	display: none;
+}
+
+.coursesmenu__text::after{
+	position: absolute;
+	content: url('../../../assets/icons/menu.svg');
+}
+
+@media(max-width: 780px){
+	.coursesmenu{
+		display: block;
+	}
+}
+

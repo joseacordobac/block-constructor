@@ -1,0 +1,41 @@
+.course-hero {
+	display: grid;
+	grid-template-columns: 60% 40%;
+	max-width: 95%;
+	margin: 0 auto;
+	padding: 20px;
+}
+
+
+.course-hero__title{
+	font-size: 40px;
+}
+
+.course-hero__info-content {
+	display: flex;
+	gap: 10px;
+	margin-bottom: 30px;
+}
+
+.course-hero__subtitle {
+	font-size: 14px;
+	position: relative;
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	padding-left: 15px;
+}
+
+.course-hero__subtitle::before{
+	position: absolute;
+	content: url('../../../assets/icons/clock.svg');
+	width: 20px;
+	height: 20px;
+	left: 0px;
+	top: 3px;
+}
+
+.course-hero__description{
+	margin-bottom: 30px;
+}
+
