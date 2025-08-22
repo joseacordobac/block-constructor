@@ -5,6 +5,13 @@ import adapterBody from '../adapter/adapterbody';
 import Skeleton from '../../components/Skeleton/skeleton'
 
 const LIST = API().API_LIST
+
+const numberDots = (numbersString) =>{
+	let numbers = Number(numbersString);
+	let numbersFormateado = numbers.toLocaleString('es-ES');
+	return numbersFormateado
+}
+
 export default function App({ queryParams }) {
 
 	const options = {
@@ -12,7 +19,7 @@ export default function App({ queryParams }) {
     body: JSON.stringify( adapterBody(queryParams))
   }
 
-	const { data, loading, error } = useFetch(`${LIST}`, options);
+	const { data, loading } = useFetch(`${LIST}`, options);
 	const responseData = data?.data
 
 	if(loading) return (
@@ -29,7 +36,7 @@ export default function App({ queryParams }) {
 						<div className="card-list__body">
 							<span className="card-list__tag-cat">{item?.tipo_producto[0]?.name}</span>
 							<div className="card-list__title" dangerouslySetInnerHTML={{__html: item.description}}/>
-							<h4 className="card-list__price">{item.price} <span className="card-list__price-description">{item.nota_price}</span> </h4>
+							<h4 className="card-list__price">{numberDots(item.price)} <span className="card-list__price-description"> {item.nota_price}</span> </h4>
 							<p className="card-list__marca">Marca: <strong className="card-list__marca-bold">{item?.marca[0]?.name}</strong></p>
 							<a href="https://wa.me/573016947189" target='_blank' className="card-list__contact-us">Pedir</a>
 						</div>

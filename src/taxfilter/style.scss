@@ -3,9 +3,10 @@
 
 	&--inline {
 		display: flex;
-		flex-wrap: wrap;
 		gap: 10px;
-		justify-content: center;
+		justify-content: space-between;
+		overflow-y: hidden;
+		flex-wrap: nowrap;
 	}
 
 	&__item {
@@ -42,6 +43,17 @@
 		padding: 5px 0px;
 	}
 
+}
 
+@media(max-width: 780px){
+	.block-taxfilter{
+		&--inline{
+			justify-content: center;
+		}
+
+		&__label span{
+				white-space: nowrap;
+		}
+	}
 }
 
