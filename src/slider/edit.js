@@ -1,5 +1,5 @@
 import { __ } from '@wordpress/i18n';
-import { useBlockProps, InnerBlocks, InspectorControls } from '@wordpress/block-editor';
+import { useBlockProps, InnerBlocks, InspectorControls, MediaPlaceholder } from '@wordpress/block-editor';
 import './editor.scss';
 import { PanelBody, RangeControl, ToggleControl, SelectControl, TextControl } from '@wordpress/components';
 import { useEffect, useRef } from '@wordpress/element';
@@ -9,18 +9,28 @@ import {adapterAttributeSliderUpdate, adapterAttributeSliderInput} from './adapt
 export default function Edit({ className, attributes, setAttributes, clientId }) {
 
 	const slidePerViewRef = useRef()
-	const { slideConfig, sliderId } = attributes
+	const { slideConfig, sliderId, arrowIcon } = attributes
 	const  ALLOWED_BLOCKS = [ 'create-block/slide-block' ];
-	const attributeAdapter = adapterAttributeSliderInput(slideConfig)
 
+	setAttributes({sliderId: clientId})
+	const attributeAdapter = adapterAttributeSliderInput(slideConfig, sliderId)
+	console.log(attributeAdapter);
 
 	const updateConfigSlide = (key, value) => {
 		const newConfigSlide = {
 			...slideConfig,
 			[key]: value
 		}
-		const dataSlideUpdate = adapterAttributeSliderUpdate(newConfigSlide)
+		const dataSlideUpdate = adapterAttributeSliderUpdate(newConfigSlide, sliderId)
 		setAttributes({ slideConfig: dataSlideUpdate })
+	}
+
+	const handleArrowsIcon = (key, value) => {
+		const newArrowIcon = {
+			...arrowIcon,
+			[key]: value
+		}
+		setAttributes({arrowIcon:newArrowIcon})
 	}
 
 	useEffect(() => {
@@ -105,16 +115,56 @@ export default function Edit({ className, attributes, setAttributes, clientId })
 					/>
 				</PanelBody>
 
-				<PanelBody title={__('Mobile settings', 'sliders-block')} initialOpen={false}>
+				<PanelBody title={__('Mobile settings', 'sliders-block')} initialOpen={true}>
 					<RangeControl
 						allowReset
 						resetFallbackValue={1}
 						label={__('slides per view mobile', 'sliders-block')}
-						value={''}
+						value={ attributeAdapter?.slidesPerViewMobile}
 						min={1}
 						max={12}
 						onChange={(value) => updateConfigSlide('slidesPerViewMobile', value)}
 					/>
+				</PanelBody>
+
+				<PanelBody title={__('Iconos flechas', 'sliders-block')} initialOpen={true}>
+					<div className='slider-block__arrows'>
+
+						<div className='slider-block__arrow'>
+							{
+								arrowIcon?.next &&
+								<img src={arrowIcon.prev} alt="arrow" />
+							}
+							<MediaPlaceholder
+								onSelect={ (media) => {
+									handleArrowsIcon('prev', media.url)
+								}}
+								icon="format-image"
+								accept="image/*"
+								allowedTypes={ ['image'] }
+								multiple={ false }
+							/>
+							<span>Icono anterior</span>
+						</div>
+						<div className='slider-block__arrow'>
+							{
+								arrowIcon?.next &&
+								<img src={arrowIcon.next} alt="arrow" />
+							}
+							<MediaPlaceholder
+								onSelect={ (media) => {
+									handleArrowsIcon('next', media.url)
+								}}
+								icon="format-image"
+								accept="image/*"
+								allowedTypes={ ['image'] }
+								multiple={ false }
+							/>
+							<span>Icono siguiente</span>
+
+						</div>
+
+					</div>
 				</PanelBody>
 
 			</InspectorControls>

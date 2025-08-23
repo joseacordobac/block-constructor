@@ -4,9 +4,57 @@
  *
  * Replace them with your own styles or remove the file completely.
  */
+.slider-block{
+	overflow: hidden;
+	position: relative;
+}
+
+.element-slider-contains{
+	position: relative;
+}
+
+.content-slider{
+	position: relative;
+}
+
+.arrow-btn {
+	position: absolute;
+	top: 31%;
+	z-index: 1;
+}
+
+.arrow-btn-right{
+	right: -40px;
+}
+
+.arrow-btn-left{
+	left: -40px;
+}
 
 .wp-block-create-block-special-blocks {
 	background-color: #21759b;
 	color: #fff;
 	padding: 2px;
 }
+
+.slider-block__arrows {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+.slider-block__arrows{
+	.components-placeholder.is-small {
+			padding: 0px;
+	}
+
+	.components-form-file-upload {
+		display: none;
+	}
+
+	.components-placeholder__label {
+			display: none;
+	}
+}
+

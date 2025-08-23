@@ -17,7 +17,7 @@ export const adapterAttributeSliderInput = ( attribute ) => {
 	return data;
 }
 
-export const adapterAttributeSliderUpdate = ( attribute ) => {
+export const adapterAttributeSliderUpdate = ( attribute, sliderId ) => {
 
 	const data = {
 		loop: attribute.loop,
@@ -39,10 +39,11 @@ export const adapterAttributeSliderUpdate = ( attribute ) => {
 		}
 	}
 
-	if( attribute.navigation ) {
+
+	if( attribute.arrows ) {
 		data.navigation = {
-			nextEl: '.swiper-button-next',
-			prevEl: '.swiper-button-prev',
+			nextEl: '.next-slider-'+sliderId,
+			prevEl: '.prev-slider-'+sliderId,
 		}
 	}
 

@@ -21,6 +21,13 @@
 		"sliderId": {
 			"type": "string",
 			"default": ""
+		},
+		"arrowIcon": {
+			"type": "object",
+			"default": {
+				"next": false,
+				"prev": false
+			}
 		}
 	},
 	"textdomain": "sliders-block",
