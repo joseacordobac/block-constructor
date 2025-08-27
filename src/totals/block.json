@@ -1,0 +1,25 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "create-block/total-filter",
+	"version": "0.1.0",
+	"title": "total filter",
+	"category": "widgets",
+	"icon": "money-alt",
+	"description": "Filtrado virtual de producto",
+	"example": {},
+	"supports": {
+		"html": false
+	},
+	"attributes": {
+		"taxonomySlug":{
+			"type": "string",
+			"default": "tipo-producto"
+		}
+	},
+	"textdomain": "custom-block",
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css",
+	"viewScript": "file:./view.js"
+}

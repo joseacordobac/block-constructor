@@ -14,8 +14,8 @@ const adapterBody = (queryParams) =>{
 				"post_type": "portafolio",
 				"limit":12,
 				"orderby":"meta_value_num",
-				"order":"ASC",
-				"meta_key":"precio"
+				"order":queryParams.order,
+				"meta_key": queryParams.metakey
 			}
 }
 

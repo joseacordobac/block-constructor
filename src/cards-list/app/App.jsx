@@ -28,7 +28,9 @@ export default function App({ queryParams }) {
 	if(responseData?.length === 0) return <div>No hay resultado con los datos consultados</div>
 
 	return (
-				responseData?.map((item) =>(
+		 	<>
+				{responseData?.map((item) =>
+				 (
 					<div className="card-list-content" key={item.id}>
 						<div className="card-lis__img">
 							{item?.thumbnail && ( <img src={item.thumbnail} className='card-list__img-src' />)}
@@ -41,6 +43,7 @@ export default function App({ queryParams }) {
 							<a href="https://wa.me/573016947189" target='_blank' className="card-list__contact-us">Pedir</a>
 						</div>
 					</div>
-				))
+				))}
+			</>
 	);
 }
