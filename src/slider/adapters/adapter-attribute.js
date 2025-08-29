@@ -62,6 +62,7 @@ export const adapterAttributeSliderUpdate = ( attribute, sliderId ) => {
 		}
 	}
 
+	console.log(data);
 	return data;
 }
 

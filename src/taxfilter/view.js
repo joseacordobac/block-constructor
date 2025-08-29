@@ -9,18 +9,24 @@ const getTaxFilter = (blockTaxfilter) => {
 		 getInputs.forEach(input => {
 
 			 input.addEventListener('change', () => {
-				 const inputValue = input.value;
-				 upDateQueryParams(input.name, inputValue);
+				const getAllChecked = item.querySelectorAll('.block-taxfilter__input:checked');
+				const inputValue = [];
+
+				if(getAllChecked.length > 0){
+					getAllChecked.forEach(checked => {
+						inputValue.push(checked.value);
+					})
+				}
+
+				upDateQueryParams(input.name, inputValue);
 			 })
 		 })
 	})
-
 }
 
 addEventListener('DOMContentLoaded', function() {
 
 	const blockTaxfilter = document.querySelectorAll('.block-taxfilter');
-
 	if(blockTaxfilter){
 		getTaxFilter(blockTaxfilter);
 	}

@@ -49,24 +49,24 @@ export default function Edit({ attributes, setAttributes }) {
             </InspectorControls>
 
             <div
-							{...useBlockProps({
-									className: `${className || ''} block-taxfilter block-taxfilter--${style} block-taxfilter--${type}`,
-							})}
+				{...useBlockProps({
+						className: `${className || ''} block-taxfilter block-taxfilter--${style} block-taxfilter--${type}`,
+				})}
             >
-							{name && <h2 className="block-taxfilter__title">{name}</h2>}
-							{data?.map((item) => (
-								<div className="block-taxfilter__item" key={item.id}>
-									<label className="block-taxfilter__label">
-										<input
-											className="block-taxfilter__input"
-											type={type}
-											name={taxonomySlug}
-											id={item.slug}
-										/>
-										<span>{item.name}</span>
-									</label>
-								</div>
-							))}
+				{name && <h2 className="block-taxfilter__title">{name}</h2>}
+				{data?.map((item) => (
+					<div className="block-taxfilter__item" key={item.id}>
+						<label className="block-taxfilter__label">
+							<input
+								className="block-taxfilter__input"
+								type={type}
+								name={taxonomySlug}
+								id={item.slug}
+							/>
+							<span>{item.name}</span>
+						</label>
+					</div>
+				))}
             </div>
         </>
     );

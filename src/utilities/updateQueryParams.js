@@ -1,8 +1,12 @@
 export const upDateQueryParams = (key, params) => {
-
 	const url = new URL(window.location.href);
 	url.searchParams.set(key, params);
 	window.history.pushState({}, '', url);
+
+    if(params.length === 0){
+        url.searchParams.delete(key);
+        window.history.pushState({}, '', url);
+    }
 
 }
 

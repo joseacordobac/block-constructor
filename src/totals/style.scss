@@ -1,59 +1,26 @@
-.block-taxfilter{
-	max-width: 100% !important;
+.card-list-head{
+    display: flex;
+    justify-content: space-between;
 
-	&--inline {
-		display: flex;
-		gap: 10px;
-		justify-content: space-between;
-		overflow-y: hidden;
-		flex-wrap: nowrap;
-	}
+    &__sort-title, &__total{
+        margin: 0px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
 
-	&__item {
-		background: #F3F9FB;
-		border-radius: 50px;
-		padding: 9px 21px;
-		cursor: pointer;
-	}
-
-	&__input[type="radio"]{
-		display: none;
-		cursor: pointer;
-	}
-
-	&__label{
-		cursor: pointer;
-		span{
-				font-size: 18px;
-				font-weight: 400;
-		}
-	}
-
-	&__title {
-    font-size: 18px;
-    font-weight: 700;
-	}
-
-}
-
-.block-taxfilter--checkbox{
-
-	.block-taxfilter__item {
-		background: transparent;
-		padding: 5px 0px;
-	}
+    &__sort-order{
+        background: #676767;
+        color: white;
+        padding: 8px 14px;
+        border-radius: 18px;
+    }
 
 }
 
 @media(max-width: 780px){
-	.block-taxfilter{
-		&--inline{
-			justify-content: center;
-		}
-
-		&__label span{
-				white-space: nowrap;
-		}
-	}
+    .card-list-head{
+        flex-wrap: wrap;
+        gap: 15px;
+    }
 }
-

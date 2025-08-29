@@ -25,7 +25,10 @@ export default function Edit({attributes, setAttributes}) {
 					</PanelBody>
 				</InspectorControls>
 
-				<h1>Componente lista de clases de cards</h1>
+				<div 
+					{...useBlockProps({ className:"card-list" })} >
+					<h3 className="card-list-text">Card list</h3>
+				</div>
 		</>
 	);
 }

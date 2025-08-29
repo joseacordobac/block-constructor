@@ -5,15 +5,7 @@
 		display: flex;
 		gap: 10px;
 		justify-content: space-between;
-		overflow-y: hidden;
 		flex-wrap: nowrap;
-	}
-
-	&__item {
-		background: #F3F9FB;
-		border-radius: 50px;
-		padding: 9px 21px;
-		cursor: pointer;
 	}
 
 	&__input[type="radio"]{
@@ -21,17 +13,51 @@
 		cursor: pointer;
 	}
 
+	&__input[type="checkbox"]{
+		display: none;
+		
+	}
+
 	&__label{
 		cursor: pointer;
-		span{
-				font-size: 18px;
-				font-weight: 400;
+
+		.block-taxfilter__text{
+			font-size: 18px;
+			font-weight: 400;
 		}
 	}
 
+	&__input[type="radio"]:checked + &__text{
+		background-color: var(--wp--preset--color--accent-1);
+		color: white;
+		border-radius: 50px;
+		padding: 9px 21px;
+		cursor: pointer;
+	}
+
+	&__input[type="checkbox"] + &__text{
+		cursor: pointer;
+		position: relative;
+		display: flex;
+		gap: 10px;
+	}
+
+	&__input[type="checkbox"] + &__text::before {
+		content: "";
+		left: 6px;
+		top: 2px;
+		width: 22px;
+		height: 22px;
+		border: solid 1px #A3A3A3;
+	}
+
+	.block-taxfilter__input[type=checkbox]:checked + .block-taxfilter__text::before{
+		background-color: var(--wp--preset--color--accent-1);
+	}
+
 	&__title {
-    font-size: 18px;
-    font-weight: 700;
+		font-size: 18px;
+		font-weight: 700;
 	}
 
 }
@@ -48,11 +74,16 @@
 @media(max-width: 780px){
 	.block-taxfilter{
 		&--inline{
-			justify-content: center;
+			overflow: scroll;
+			padding: 12px 5px;
 		}
 
 		&__label span{
 				white-space: nowrap;
+		}
+
+		&__label &__text{
+			font-size: 14px;
 		}
 	}
 }
