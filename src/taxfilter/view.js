@@ -24,6 +24,51 @@ const getTaxFilter = (blockTaxfilter) => {
 	})
 }
 
+
+const filtersActions = () => {
+	const menuFilters = document.querySelector('.js-start-filter');
+	if(menuFilters){
+		menuFilters.addEventListener('click', () => {
+			const getTaxfilter = document.querySelector('.mobile-float');
+			if(getTaxfilter){
+				getTaxfilter.classList.toggle('mobile-float--active');
+			}
+		});
+	}
+
+	const closeFilters = document.querySelector('.js-close-filter');
+	if(closeFilters){
+		closeFilters.addEventListener('click', () => {
+			const getTaxfilter = document.querySelector('.mobile-float');
+			if(getTaxfilter){
+				getTaxfilter.classList.remove('mobile-float--active');
+
+				let urlObj = new URL(window.location.href);
+				urlObj.search = '';
+				window.history.pushState({}, '', urlObj.href);
+
+				const getAllChecked = document.querySelectorAll('.block-taxfilter__input:checked');
+				if(getAllChecked.length > 0){
+					getAllChecked.forEach(checked => {
+						checked.checked = false;
+					})
+				}
+			}
+		});
+	}
+
+	const applyFilters = document.querySelector('.js-apply-filter');
+	if(applyFilters){
+		applyFilters.addEventListener('click', () => {
+			const getTaxfilter = document.querySelector('.mobile-float');
+			if(getTaxfilter){
+				getTaxfilter.classList.remove('mobile-float--active');
+			}
+		});
+	}
+
+}
+
 addEventListener('DOMContentLoaded', function() {
 
 	const blockTaxfilter = document.querySelectorAll('.block-taxfilter');
@@ -31,6 +76,7 @@ addEventListener('DOMContentLoaded', function() {
 		getTaxFilter(blockTaxfilter);
 	}
 
+	filtersActions()
 });
 
 

@@ -23,7 +23,7 @@
 
 		&-src {
 			width: 100%;
-			object-fit: contain;
+			object-fit: cover;
 			height: 100%;
 			max-width: 168px;
 		}
@@ -110,7 +110,6 @@
 		&__img{
 			width: 100%;
 			height: auto;
-			max-width: 85%;
 
 			&-src{
 				max-width: 100%;
