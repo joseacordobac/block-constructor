@@ -55,7 +55,7 @@ export default function Edit({ className, attributes, setAttributes, clientId })
 					allowReset
 					resetFallbackValue={1}
 					label={__('slides per view desktop', 'sliders-block')}
-					value={ attributeAdapter?.slidesPerView}
+					value={ attributeAdapter?.breakpoints?.780?.slidesPerView : attributeAdapter?.slidesPerView}
 					min={1}
 					max={12}
 					onChange={(value) => updateConfigSlide('slidesPerView', value)}
@@ -125,7 +125,7 @@ export default function Edit({ className, attributes, setAttributes, clientId })
 					allowReset
 					resetFallbackValue={1}
 					label={__('slides per view mobile', 'sliders-block')}
-					value={ attributeAdapter?.slidesPerViewMobile}
+					value={ attributeAdapter?.slidesPerView}
 					min={1}
 					max={12}
 					onChange={(value) => updateConfigSlide('slidesPerViewMobile', value)}
