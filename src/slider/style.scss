@@ -39,9 +39,8 @@
 
 .slider-block__arrows {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 5px;
+	flex-direction: column;
+    gap: 15px;
 }
 
 .slider-block__arrows{
@@ -56,5 +55,9 @@
 	.components-placeholder__label {
 			display: none;
 	}
+}
+
+.components-placeholder.components-placeholder{
+	padding: 0px;
 }
 

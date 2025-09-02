@@ -21,7 +21,7 @@ export const adapterAttributeSliderUpdate = ( attribute, sliderId ) => {
 
 	const data = {
 		loop: attribute.loop,
-		slidesPerView: attribute.slidesPerView,
+		slidesPerView: attribute.slidesPerViewMobile ? attribute.slidesPerViewMobile : attribute.slidesPerView,
 		spaceBetween: attribute.spaceBetween,
 		speed: attribute.speed,
 		effect: attribute.animation,
@@ -29,6 +29,12 @@ export const adapterAttributeSliderUpdate = ( attribute, sliderId ) => {
 		autoplay: attribute.autoplay,
 		Hasthumbs: attribute.Hasthumbs,
 		spaceBetween: attribute.spaceBetween,
+		breakpoints: {
+			780: {
+				slidesPerView: attribute.slidesPerView,
+				spaceBetween: attribute.spaceBetween,
+			}
+		},
 	};
 
 	if( attribute.pagination ) {
