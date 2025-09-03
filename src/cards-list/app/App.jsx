@@ -30,11 +30,12 @@ export default function App({ queryParams }) {
 	const responseData = data?.data
 	insertInTotal(data?.count)
 
+	
 	if(loading) return (
 		<Skeleton repeats={[1,2,3,4,5,6,7,8]}/>
 	)
 	if(responseData?.length === 0) return <div>No hay resultado con los datos consultados</div>
-
+	
 	return (
 		<>
 		{responseData?.map((item) =>
@@ -51,7 +52,7 @@ export default function App({ queryParams }) {
 					<a href={`https://wa.me/${item.whatsapp_number}?text=Estoy interesado en: ${item.description}`} target='_blank' className="card-list__contact-us">Pedir</a>
 				</div>
 			</div>
-		))}
+			))}
 		</>
 	);
 }

@@ -114,16 +114,19 @@
 
 @media(max-width: 780px){
 	.card-list{
-		display: block;
+		display: flex;
+		flex-direction: column;
+		gap: 40px;
 
 		&-content{
 			flex-direction: column;
 			width: 100%;
 			border: none;
+			padding: 0;
 		}
 
 		&__img{
-			width: 100%;
+			width: 50%;
 			height: auto;
 
 			&-src{
@@ -139,4 +142,10 @@
 	display: flex;
 	gap: 10px;
 	align-items: center;
+}
+
+@media(max-width: 780px) {
+	.skeleton {
+		flex-direction: column;
+	}
 }

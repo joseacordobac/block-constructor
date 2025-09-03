@@ -102,7 +102,6 @@
 @media(max-width: 780px){
 	.menu-filters{
 		display: block;
-		position: fixed;
 		bottom: 24px;
 		width: 100%;
 		left: 0;
@@ -110,7 +109,6 @@
 		justify-content: center;
     	align-items: center;
 		display: flex;
-
 
 		p {
 			display: flex;
@@ -131,13 +129,23 @@
 		img {
 			width: 25px !important;
 		}
+
+	}
+	
+	.content-float-filter {
+		display: flex;
+		flex-direction: column;
+		height: 95dvh;
+		position: relative;
 	}
 
 	.js-menu-mobile {
 		display: block !important;
 		width: 100%;
-		position: relative;
-		top: 20px;
+		position: absolute;
+		bottom: 30px;
+		text-align: center;
+		
 	}
 
 }

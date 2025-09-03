@@ -15,37 +15,37 @@ export default function Edit({ attributes, setAttributes }) {
     return (
         <>
             <InspectorControls>
-							<PanelBody title={__('Configuraciones', 'text-domain')} initialOpen={true}>
-								<TextControl
-									label={__('Nombre', 'text-domain')}
-									value={name}
-									onChange={(newName) => setAttributes({ name: newName })}
-								/>
-								<SelectControl
-									label={__('Tip de filtro', 'text-domain')}
-									value={type}
-									options={[
-											{ label: __('Chips', 'text-domain'), value: 'radio' },
-											{ label: __('Checkbox', 'text-domain'), value: 'checkbox' },
-									]}
-									onChange={(newType) => setAttributes({ type: newType })}
-								/>
-								<SelectControl
-									label={__('Dirección de filtro', 'text-domain')}
-									value={style}
-									options={[
-											{ label: __('En linea', 'text-domain'), value: 'inline' },
-											{ label: __('Columna', 'text-domain'), value: 'column' },
-									]}
-									onChange={(newStyle) => setAttributes({ style: newStyle })}
-								/>
-								<SelectControl
-									label={__('Taxonomia', 'text-domain')}
-									value={taxonomySlug}
-									options={[...allTax]}
-									onChange={(newTax) => setAttributes({ taxonomySlug: newTax })}
-								/>
-							</PanelBody>
+				<PanelBody title={__('Configuraciones', 'text-domain')} initialOpen={true}>
+					<TextControl
+						label={__('Nombre', 'text-domain')}
+						value={name}
+						onChange={(newName) => setAttributes({ name: newName })}
+					/>
+					<SelectControl
+						label={__('Tip de filtro', 'text-domain')}
+						value={type}
+						options={[
+								{ label: __('Chips', 'text-domain'), value: 'radio' },
+								{ label: __('Checkbox', 'text-domain'), value: 'checkbox' },
+						]}
+						onChange={(newType) => setAttributes({ type: newType })}
+					/>
+					<SelectControl
+						label={__('Dirección de filtro', 'text-domain')}
+						value={style}
+						options={[
+								{ label: __('En linea', 'text-domain'), value: 'inline' },
+								{ label: __('Columna', 'text-domain'), value: 'column' },
+						]}
+						onChange={(newStyle) => setAttributes({ style: newStyle })}
+					/>
+					<SelectControl
+						label={__('Taxonomia', 'text-domain')}
+						value={taxonomySlug}
+						options={[...allTax]}
+						onChange={(newTax) => setAttributes({ taxonomySlug: newTax })}
+					/>
+				</PanelBody>
             </InspectorControls>
 
             <div
