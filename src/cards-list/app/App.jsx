@@ -6,12 +6,6 @@ import Skeleton from '../../components/Skeleton/skeleton'
 
 const LIST = API().API_LIST
 
-const numberDots = (numbersString) =>{
-	let numbers = Number(numbersString);
-	let numbersFormateado = numbers.toLocaleString('es-ES');
-	return numbersFormateado
-}
-
 const insertInTotal = ( total) =>{
 	const getTotal = document.querySelector('.card-list-head__total-count');
 	if(getTotal){
@@ -21,6 +15,9 @@ const insertInTotal = ( total) =>{
 
 export default function App({ queryParams }) {
 
+	queryParams.post_type = 'portafolio';
+	queryParams.orderby = 'meta_value'
+
 	const options = {
 		method: 'POST',
 		body: JSON.stringify( adapterBody(queryParams))
@@ -29,7 +26,6 @@ export default function App({ queryParams }) {
 	const { data, loading } = useFetch(`${LIST}`, options);
 	const responseData = data?.data
 	insertInTotal(data?.count)
-
 	
 	if(loading) return (
 		<Skeleton repeats={[1,2,3,4,5,6,7,8]}/>
