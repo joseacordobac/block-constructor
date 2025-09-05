@@ -8,6 +8,14 @@
 		flex-wrap: nowrap;
 	}
 
+	&--radio{
+		.block-taxfilter__text{
+			background: #F3F9FB;
+			padding: 11px 30px;
+			border-radius: 50px;
+		}
+	}
+
 	&__input[type="radio"]{
 		display: none;
 		cursor: pointer;
@@ -61,6 +69,8 @@
 	}
 
 }
+
+
 
 .block-taxfilter--checkbox{
 

@@ -61,3 +61,20 @@
 	padding: 0px;
 }
 
+@media(max-width: 780px){
+	.arrow-btn{
+        top: 31%;
+		
+		img{
+			width: 50px;
+		}
+	}
+
+	.arrow-btn-left{
+		left: -19px;
+	}
+	.arrow-btn-right{
+		right: -19px;
+	}
+}
+
