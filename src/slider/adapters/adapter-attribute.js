@@ -11,7 +11,11 @@ export const adapterAttributeSliderInput = ( attribute ) => {
 		pagination: attribute?.pagination,
 		autoplaySpeed: attribute?.autoplaySpeed,
 		Hasthumbs: attribute?.Hasthumbs,
-		spaceBetween: attribute?.spaceBetween,
+	}
+
+	if(attribute?.breakpoints?.[780]?.slidesPerView){
+		data.slidesPerView = attribute?.breakpoints?.[780]?.slidesPerView
+		data.slidesPerViewMobile = attribute?.slidesPerView
 	}
 
 	return data;
@@ -21,21 +25,23 @@ export const adapterAttributeSliderUpdate = ( attribute, sliderId ) => {
 
 	const data = {
 		loop: attribute.loop,
-		slidesPerView: attribute.slidesPerViewMobile ? attribute.slidesPerViewMobile : attribute.slidesPerView,
+		slidesPerView: attribute.slidesPerView,
 		spaceBetween: attribute.spaceBetween,
 		speed: attribute.speed,
 		effect: attribute.animation,
 		arrows: attribute.arrows,
 		autoplay: attribute.autoplay,
 		Hasthumbs: attribute.Hasthumbs,
-		spaceBetween: attribute.spaceBetween,
-		breakpoints: {
-			780: {
-				slidesPerView: attribute.slidesPerView,
-				spaceBetween: attribute.spaceBetween,
-			}
-		},
 	};
+
+	if( attribute.slidesPerViewMobile){
+		data.slidesPerView = attribute.slidesPerViewMobile
+		data.breakpoints ={
+			780: {
+				slidesPerView: attribute.slidesPerView
+			}
+		}
+	}
 
 	if( attribute.pagination ) {
 		data.pagination = {
@@ -68,7 +74,6 @@ export const adapterAttributeSliderUpdate = ( attribute, sliderId ) => {
 		}
 	}
 
-	console.log(data);
 	return data;
 }
 

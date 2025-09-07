@@ -7,7 +7,8 @@ import {adapterAttributeSliderUpdate, adapterAttributeSliderInput} from './adapt
 
 
 export default function Edit({ className, attributes, setAttributes, clientId }) {
-
+	console.log(attributes)
+	
 	const slidePerViewRef = useRef()
 	const { slideConfig, sliderId, arrowIcon } = attributes
 	const  ALLOWED_BLOCKS = [ 'create-block/slide-block' ];
@@ -44,8 +45,9 @@ export default function Edit({ className, attributes, setAttributes, clientId })
 
 			gridElement.style.display = `grid`
 			gridElement.style.gridTemplateColumns = `repeat(${attributeAdapter?.slidesPerView}, 1fr)`
+			gridElement.style.gap = `${attributeAdapter?.spaceBetween}px`
 
-	}, [attributeAdapter?.slidesPerView])
+	}, [attributeAdapter?.slidesPerView, attributeAdapter?.spaceBetween])
 
 	return (
 		<>
@@ -55,7 +57,7 @@ export default function Edit({ className, attributes, setAttributes, clientId })
 					allowReset
 					resetFallbackValue={1}
 					label={__('slides per view desktop', 'sliders-block')}
-					value={ attributeAdapter?.breakpoints?.780?.slidesPerView : attributeAdapter?.slidesPerView}
+					value={ attributeAdapter?.slidesPerView}
 					min={1}
 					max={12}
 					onChange={(value) => updateConfigSlide('slidesPerView', value)}
@@ -84,7 +86,7 @@ export default function Edit({ className, attributes, setAttributes, clientId })
 					allowReset
 					resetFallbackValue={1}
 					label={__('Espacio entre slider', 'sliders-block')}
-					value={ attributeAdapter?.slidesPerView}
+					value={ attributeAdapter?.spaceBetween}
 					min={1}
 					max={100}
 					onChange={(value) => updateConfigSlide('spaceBetween', value)}
@@ -125,7 +127,7 @@ export default function Edit({ className, attributes, setAttributes, clientId })
 					allowReset
 					resetFallbackValue={1}
 					label={__('slides per view mobile', 'sliders-block')}
-					value={ attributeAdapter?.slidesPerView}
+					value={ attributeAdapter?.slidesPerViewMobile}
 					min={1}
 					max={12}
 					onChange={(value) => updateConfigSlide('slidesPerViewMobile', value)}
