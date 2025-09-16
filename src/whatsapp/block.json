@@ -1,36 +1,36 @@
 {
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
-	"name": "create-block/searcher",
+	"name": "create-block/whatsapp",
 	"version": "0.1.0",
-	"title": "Buscador",
+	"title": "Boton whatsapp",
 	"category": "widgets",
-	"icon": "search",
-	"description": "This is a searcher",
+	"icon": "whatsapp",
+	"description": "Boton whatsapp|",
 	"example": {},
 	"supports": {
 		"html": false
 	},
 	"attributes": {
-		"placeholder": {
+		"whatsappText":{
 			"type": "string",
-			"default": "Buscar"
+			"default": "Contáctanos"
 		},
-		"buttonText": {
-			"type": "string",
-			"default": "Buscar"
-		},
-		"searchPage": {
-			"type": "boolean",
-			"default": false
-		},
-		"className": {
+		"whatsappNumber":{
 			"type": "string",
 			"default": ""
 		},
-		"icon": {
+		"whatsappMessage":{
 			"type": "string",
 			"default": ""
+		},
+		"position":{
+			"type": "object",
+			"default": {
+				"type":"relative",
+				"top":"0",
+				"left":"0"
+			}
 		}
 	},
 	"textdomain": "custom-block",
@@ -38,5 +38,5 @@
 	"editorStyle": "file:./index.css",
 	"style": "file:./style-index.css",
 	"viewScript": "file:./view.js",
-	"render":"file:./render.php"
+	"render": "file:./render.php"
 }

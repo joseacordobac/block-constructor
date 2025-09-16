@@ -4,14 +4,17 @@
  *
  * Replace them with your own styles or remove the file completely.
  */
+ 
+ .element-slider-contains{
+	 position: relative;
+ }
+
+
 .slider-block{
 	overflow: hidden;
 	position: relative;
 }
 
-.element-slider-contains{
-	position: relative;
-}
 
 .content-slider{
 	position: relative;
@@ -39,8 +42,11 @@
 
 .slider-block__arrows {
     display: flex;
-	flex-direction: column;
     gap: 15px;
+}
+
+.slider-block__arrows .components-button.is-secondary{
+	white-space: pre-wrap !important;
 }
 
 .slider-block__arrows{
@@ -61,6 +67,10 @@
 	padding: 0px;
 }
 
+.arrow-btn{
+	cursor: pointer;
+}
+
 @media(max-width: 780px){
 	.arrow-btn{
         top: 31%;
@@ -78,3 +88,34 @@
 	}
 }
 
+
+/** slider temp */
+.botom-arrows{
+	.arrow-btn{
+		top: 105%;
+		
+		img{
+		width: 68px;
+		}
+	}
+
+	.arrow-btn-right{
+		right: 43%;
+	}
+
+	.arrow-btn-left{
+		left: 43%;
+	}
+}
+
+@media(max-width: 780px){
+	.botom-arrows{
+		.arrow-btn-right{
+			right: 22%;
+		}
+
+		.arrow-btn-left{
+    		left: 26%;
+		}
+	}
+}

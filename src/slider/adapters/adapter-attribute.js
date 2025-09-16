@@ -1,80 +1,115 @@
-export const adapterAttributeSliderInput = ( attribute ) => {
+export const adapterAtributes = ( attribute ) => {
+
+	const {
+		loop,
+		slidesPerView,
+		spaceBetween,
+		speed,
+		effect,
+		arrows,
+		autoplay,
+		Hasthumbs,
+		centeredSlides,
+		pagination,
+		autoplaySpeed, 
+		breakpoints,
+	} = attribute;
 
 	const data = {
-		loop: attribute?.loop,
-		slidesPerView: attribute?.slidesPerView,
-		spaceBetween: attribute?.spaceBetween,
-		speed: attribute?.speed,
-		animation: attribute?.effect,
-		arrows: attribute?.arrows,
-		autoplay: attribute?.autoplay,
-		pagination: attribute?.pagination,
-		autoplaySpeed: attribute?.autoplaySpeed,
-		Hasthumbs: attribute?.Hasthumbs,
-	}
-
-	if(attribute?.breakpoints?.[780]?.slidesPerView){
-		data.slidesPerView = attribute?.breakpoints?.[780]?.slidesPerView
-		data.slidesPerViewMobile = attribute?.slidesPerView
+		loop,
+		spaceBetween,
+		speed,
+		animation:effect,
+		arrows,
+		autoplay,
+		Hasthumbs,
+		centeredSlides,
+		pagination,
+		autoplaySpeed,
+		slidesPerViewDesktop:breakpoints?.[780]?.slidesPerView,
+		slidesPerViewMobile:slidesPerView
 	}
 
 	return data;
 }
 
-export const adapterAttributeSliderUpdate = ( attribute, sliderId ) => {
+export const adapterSetAttributes = (attribute, sliderId) => {
+  const {
+    loop,
+    spaceBetween,
+    speed,
+    animation: effect,
+    arrows,
+    autoplay,
+    Hasthumbs,
+    centeredSlides,
+    slidesPerViewMobile,
+    slidesPerViewDesktop,
+    pagination,
+    autoplaySpeed
+  } = attribute;
 
-	const data = {
-		loop: attribute.loop,
-		slidesPerView: attribute.slidesPerView,
-		spaceBetween: attribute.spaceBetween,
-		speed: attribute.speed,
-		effect: attribute.animation,
-		arrows: attribute.arrows,
-		autoplay: attribute.autoplay,
-		Hasthumbs: attribute.Hasthumbs,
-	};
-
-	if( attribute.slidesPerViewMobile){
-		data.slidesPerView = attribute.slidesPerViewMobile
-		data.breakpoints ={
-			780: {
-				slidesPerView: attribute.slidesPerView
-			}
+  const data = {
+    loop,
+    spaceBetween,
+    speed,
+    effect,
+	arrows,
+	slidesPerView: slidesPerViewMobile,
+	breakpoints: {
+		780: {
+			slidesPerView:slidesPerViewDesktop
 		}
 	}
+  };
 
-	if( attribute.pagination ) {
-		data.pagination = {
-			el: '.swiper-pagination',
-			clickable: true,
-			type: 'bullets',
-		}
-	}
+  if (centeredSlides) {
+    data.centeredSlides = true;
+  }
 
+  if (slidesPerViewMobile) {
+    data.slidesPerView = slidesPerViewMobile;
+  }
 
-	if( attribute.arrows ) {
-		data.navigation = {
-			nextEl: '.next-slider-'+sliderId,
-			prevEl: '.prev-slider-'+sliderId,
-		}
-	}
+  if (slidesPerViewDesktop) {
+    data.breakpoints = {
+      780: {
+        slidesPerView:slidesPerViewDesktop
+      }
+    };
+  }
 
-	if( attribute.autoplay ) {
-		data.autoplay = {
-			delay: attribute.autoplaySpeed,
-			disableOnInteraction: true,
-		}
-	}
+  if (pagination) {
+    data.pagination = {
+      el: '.swiper-pagination',
+      clickable: true,
+      type: 'bullets',
+    };
+  }
 
-	if( attribute.Hasthumbs ) {
-		data.thumbs = {
-			swiper: {
-				el: '.swiper-thumbs',
-			}
-		}
-	}
+  if (arrows) {
+    data.navigation = {
+      nextEl: `.next-slider-${sliderId}`,
+      prevEl: `.prev-slider-${sliderId}`,
+    };
+  }
 
-	return data;
-}
+  if (autoplay) {
+    data.autoplay = {
+      delay: autoplaySpeed,
+      disableOnInteraction: true,
+    };
+  }
+
+  if (Hasthumbs) {
+    data.thumbs = {
+      swiper: {
+        el: '.swiper-thumbs',
+      },
+    };
+  }
+
+  return data;
+};
 
 

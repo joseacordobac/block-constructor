@@ -3,25 +3,25 @@ import { useBlockProps, InnerBlocks, InspectorControls, MediaPlaceholder } from 
 import './editor.scss';
 import { PanelBody, RangeControl, ToggleControl, SelectControl, TextControl } from '@wordpress/components';
 import { useEffect, useRef } from '@wordpress/element';
-import {adapterAttributeSliderUpdate, adapterAttributeSliderInput} from './adapters/adapter-attribute'
+import {adapterSetAttributes, adapterAtributes} from './adapters/adapter-attribute'
 
 
 export default function Edit({ className, attributes, setAttributes, clientId }) {
-	console.log(attributes)
 	
 	const slidePerViewRef = useRef()
 	const { slideConfig, sliderId, arrowIcon } = attributes
 	const  ALLOWED_BLOCKS = [ 'create-block/slide-block' ];
 
 	setAttributes({sliderId: clientId})
-	const attributeAdapter = adapterAttributeSliderInput(slideConfig, sliderId)
-	
+	const attributeAdapter = adapterAtributes(slideConfig, sliderId)
+
 	const updateConfigSlide = (key, value) => {
+
 		const newConfigSlide = {
-			...slideConfig,
+			...attributeAdapter,
 			[key]: value
 		}
-		const dataSlideUpdate = adapterAttributeSliderUpdate(newConfigSlide, sliderId)
+		const dataSlideUpdate = adapterSetAttributes(newConfigSlide, sliderId)
 		setAttributes({ slideConfig: dataSlideUpdate })
 	}
 
@@ -44,10 +44,10 @@ export default function Edit({ className, attributes, setAttributes, clientId })
 			if(!gridElement) return
 
 			gridElement.style.display = `grid`
-			gridElement.style.gridTemplateColumns = `repeat(${attributeAdapter?.slidesPerView}, 1fr)`
+			gridElement.style.gridTemplateColumns = `repeat(${attributeAdapter?.slidesPerViewDesktop}, 1fr)`
 			gridElement.style.gap = `${attributeAdapter?.spaceBetween}px`
 
-	}, [attributeAdapter?.slidesPerView, attributeAdapter?.spaceBetween])
+	}, [attributeAdapter?.slidesPerViewDesktop, attributeAdapter?.spaceBetween])
 
 	return (
 		<>
@@ -57,10 +57,10 @@ export default function Edit({ className, attributes, setAttributes, clientId })
 					allowReset
 					resetFallbackValue={1}
 					label={__('slides per view desktop', 'sliders-block')}
-					value={ attributeAdapter?.slidesPerView}
+					value={ attributeAdapter?.slidesPerViewDesktop}
 					min={1}
 					max={12}
-					onChange={(value) => updateConfigSlide('slidesPerView', value)}
+					onChange={(value) => updateConfigSlide('slidesPerViewDesktop', value)}
 				/>
 				<ToggleControl
 					label="Slider infinito"
@@ -81,6 +81,11 @@ export default function Edit({ className, attributes, setAttributes, clientId })
 					label="Autoplay"
 					checked={ attributeAdapter?.autoplay}
 					onChange={ (e) => updateConfigSlide('autoplay', !attributeAdapter?.autoplay ) }
+				/>
+				<ToggleControl
+					label="Centrar slide"
+					checked={ attributeAdapter?.centeredSlides}
+					onChange={ (e) => updateConfigSlide('centeredSlides', !attributeAdapter?.centeredSlides ) }
 				/>
 				<RangeControl
 					allowReset
@@ -133,46 +138,48 @@ export default function Edit({ className, attributes, setAttributes, clientId })
 					onChange={(value) => updateConfigSlide('slidesPerViewMobile', value)}
 				/>
 			</PanelBody>
+		
+			{attributeAdapter?.arrows &&
+				<PanelBody title={__('Iconos flechas', 'sliders-block')} initialOpen={true}>
+					<div className='slider-block__arrows'>
 
-			<PanelBody title={__('Iconos flechas', 'sliders-block')} initialOpen={true}>
-				<div className='slider-block__arrows'>
+						<div className='slider-block__arrow'>
+							{
+								arrowIcon?.next &&
+								<img src={arrowIcon.prev} alt="arrow" />
+							}
+							<MediaPlaceholder
+								onSelect={ (media) => {
+									handleArrowsIcon('prev', media.url)
+								}}
+								icon="format-image"
+								accept="image/*"
+								allowedTypes={ ['image'] }
+								multiple={ false }
+							/>
+							<span>Icono anterior</span>
+						</div>
+						<div className='slider-block__arrow'>
+							{
+								arrowIcon?.next &&
+								<img src={arrowIcon.next} alt="arrow" />
+							}
+							<MediaPlaceholder
+								onSelect={ (media) => {
+									handleArrowsIcon('next', media.url)
+								}}
+								icon="format-image"
+								accept="image/*"
+								allowedTypes={ ['image'] }
+								multiple={ false }
+							/>
+							<span>Icono siguiente</span>
 
-					<div className='slider-block__arrow'>
-						{
-							arrowIcon?.next &&
-							<img src={arrowIcon.prev} alt="arrow" />
-						}
-						<MediaPlaceholder
-							onSelect={ (media) => {
-								handleArrowsIcon('prev', media.url)
-							}}
-							icon="format-image"
-							accept="image/*"
-							allowedTypes={ ['image'] }
-							multiple={ false }
-						/>
-						<span>Icono anterior</span>
+						</div>
+
 					</div>
-					<div className='slider-block__arrow'>
-						{
-							arrowIcon?.next &&
-							<img src={arrowIcon.next} alt="arrow" />
-						}
-						<MediaPlaceholder
-							onSelect={ (media) => {
-								handleArrowsIcon('next', media.url)
-							}}
-							icon="format-image"
-							accept="image/*"
-							allowedTypes={ ['image'] }
-							multiple={ false }
-						/>
-						<span>Icono siguiente</span>
-
-					</div>
-
-				</div>
-			</PanelBody>
+				</PanelBody>
+			}
 
 		</InspectorControls>
 

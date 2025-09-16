@@ -1,0 +1,42 @@
+/**
+ * The following styles get applied inside the editor only.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+
+.ctom-block-whatsapp{
+    right: 25px;
+    z-index: 1;
+    bottom: 10%;
+}
+
+.ctom-block-whatsapp__anchor{
+    background: #25D366;
+    padding: 18px;
+    border-radius: 25px;
+    display: flex !important;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: white;
+    cursor: pointer;
+    border: solid 0px white;
+    transition: 0.35s;
+
+    img{
+        width: 25px !important;
+        height: 25px;
+    }
+
+    .block-editor-rich-text__editable.rich-text {
+        display: flex;
+        gap: 10px;
+        margin: 0;
+    }
+}
+
+.ctom-block-whatsapp__anchor:hover{
+    border: solid 5px white;
+    transition: 0.35s;
+}
+

@@ -14,7 +14,6 @@ const progressCalculation = (total, classesFinished = 0) => {
 export default function App() {
 
 	const { data, loading, error } = useFetch(`${allCourses}`);
-	console.log(data)
 	if (loading) return <div><LinearProgress /></div>;
 	if (error) return <div>Error: {error}</div>;
 

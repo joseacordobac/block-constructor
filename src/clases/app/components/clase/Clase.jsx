@@ -16,7 +16,6 @@ export default function Clase() {
 	if (error) return <div>Error: {error}</div>
 
 	const { content, fields, title, next_post, previous_post, id, completed} = data[0]
-	console.log(data)
 
 	return (
 		<div className="course-info">

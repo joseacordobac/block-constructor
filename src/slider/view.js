@@ -1,4 +1,4 @@
-window.addEventListener('DOMContentLoaded', function () {
+window.addEventListener('load', function () {
 	const swiperContainers = document.querySelectorAll('.swiper-container');
 
 	const swipers = {};
@@ -7,6 +7,7 @@ window.addEventListener('DOMContentLoaded', function () {
 	swiperContainers.forEach(container => {
 		const id = container.getAttribute('id');
 		const swiperOptions = JSON.parse(container.getAttribute('data-swiper'));
+		console.log(swiperOptions)
 
 		if (!swiperOptions?.Hasthumbs) {
 			swipers[id] = new Swiper(container, swiperOptions);
