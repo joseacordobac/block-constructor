@@ -49,7 +49,7 @@ $wrapper_attributes = get_block_wrapper_attributes( array(
             $cards_list->the_post();
 
             $tipo_producto = get_the_terms( get_the_ID(), 'tipo-producto' );
-            $marca         = get_the_terms( get_the_ID(), 'marcas' );
+            $marca         = get_the_terms( get_the_ID(), 'marcas' );            
             $tipo_producto_name = ! empty( $tipo_producto ) ? esc_html( $tipo_producto[0]->name ) : '';
             $marca_name         = ! empty( $marca ) ? esc_html( $marca[0]->name ) : '';
 
