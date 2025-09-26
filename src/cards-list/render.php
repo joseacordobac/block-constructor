@@ -64,7 +64,12 @@ $wrapper_attributes = get_block_wrapper_attributes( array(
             <div class="card-list-content">
                 <div class="card-list__img">
                     <?php if ( $url_imagen ) : ?>
-                        <img class="card-list__img-src" src="<?php echo $url_imagen; ?>" alt="<?php echo esc_attr( get_the_title() ); ?>">
+                        <img 
+                            class="card-list__img-src" 
+                            src="<?php echo $url_imagen; ?>" 
+                            onerror="this.onerror=null; this.src='https://catalogo.electrobujias.com/wp-content/uploads/2025/09/logo.png';"
+                            alt="<?php echo esc_attr( get_the_title() ); ?>"
+                        >
                     <?php endif; ?>
                 </div>
                 <div class="card-list__body">
