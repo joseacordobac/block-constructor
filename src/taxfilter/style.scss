@@ -12,9 +12,11 @@
 	&--radio{
 		.block-taxfilter__text{
 			background: #F3F9FB;
-			padding: 11px 30px;
+			padding: 9px 17px;
 			border-radius: 50px;
-			display: flex;
+			font-size: 14px !important;
+			display: block;
+			text-align: center
 		}
 	}
 

@@ -59,7 +59,7 @@ export default function App({ queryParams }) {
 					<div className="card-list__title" dangerouslySetInnerHTML={{__html: item.description}}/>
 					<h4 className="card-list__price">{item.price} <span className="card-list__price-description"> {item.nota_price}</span> </h4>
 					<p className="card-list__marca">Marca: <strong className="card-list__marca-bold">{item?.marca[0]?.name}</strong></p>
-					<a href={`https://wa.me/${item.whatsapp_number}?text=Estoy interesado en: ${item.description}`} target='_blank' className="card-list__contact-us">Pedir</a>
+					<a href={`https://wa.me/${item.whatsapp}?text=Estoy interesado en: ${item.description}`} target='_blank' className="card-list__contact-us">Pedir</a>
 				</div>
 			</div>
 			))}
