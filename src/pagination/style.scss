@@ -16,3 +16,10 @@ button.MuiPaginationItem-root {
     background-color: var(--wp--preset--color--accent-1) !important;
     color: white;
 }
+
+@media(max-width: 780px){
+    ul.MuiPagination-ul.css-1c5o7vy-MuiPagination-ul {
+        justify-content: center;
+        gap: 5px;
+    }
+}
